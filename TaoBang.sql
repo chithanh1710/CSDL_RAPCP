@@ -156,7 +156,6 @@ CREATE TABLE tickets
     id int IDENTITY(1,1),
     id_show_time int,
     id_seat int,
-    price DECIMAL(10, 2),
     CONSTRAINT pk_tickets PRIMARY KEY (id),
     CONSTRAINT fk_tickets_show_times FOREIGN KEY (id_show_time) REFERENCES show_times(id),
     CONSTRAINT fk_tickets_seats FOREIGN KEY (id_seat) REFERENCES seats(id)
@@ -170,7 +169,7 @@ CREATE TABLE customers
     id int IDENTITY(1,1),
     name nvarchar(50),
     email nvarchar(50) UNIQUE,
-    phone char(10) UNIQUE CHECK (LEN(phone) = 10),
+    phone char(10),
     rank nvarchar(20) CHECK (rank IN (N'CẤP ĐỒNG', N'CẤP BẠC', N'CẤP VÀNG', N'CẤP BẠCH KIM', N'CẤP KIM CƯƠNG')) DEFAULT N'CẤP ĐỒNG',
     CONSTRAINT pk_customers PRIMARY KEY (id)
 );
@@ -251,7 +250,7 @@ CREATE TABLE transactions_foods_drinks
     id_food_drink int,
     quantity int,
     CONSTRAINT pk_transactions_foods_drinks PRIMARY KEY (id_transaction, id_food_drink),
-    CONSTRAINT fk_transactions_foods_drinks_transactions FOREIGN KEY (id_transaction) REFERENCES transactions(id),
+    CONSTRAINT fk_transactions_foods_drinks_transactions FOREIGN KEY (id_transaction) REFERENCES transactions(id) ON DELETE CASCADE,
     CONSTRAINT fk_transactions_foods_drinks_foods_drinks FOREIGN KEY (id_food_drink) REFERENCES foods_drinks(id)
 );
 

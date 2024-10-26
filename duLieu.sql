@@ -1,4 +1,24 @@
-﻿--------------------------------- insert TABLE ----------------------------------------------
+﻿SELECT * FROM genres;
+SELECT * FROM directors;
+SELECT * FROM actors;
+SELECT * FROM movies;
+SELECT * FROM genres_movies;
+SELECT * FROM cinemas;
+SELECT * FROM screen_rooms;
+SELECT * FROM show_times;
+SELECT * FROM seats;
+SELECT * FROM screen_rooms_seats;
+SELECT * FROM tickets;
+SELECT * FROM customers;
+SELECT * FROM staffs;
+SELECT * FROM problems;
+SELECT * FROM transactions;
+SELECT * FROM foods_drinks;
+SELECT * FROM transactions_foods_drinks;
+SELECT * FROM vouchers;
+SELECT * FROM voucher_uses;
+
+--------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng director
 --------------------------------------------------------------------------------------
 INSERT INTO directors(name) VALUES
@@ -29,10 +49,9 @@ INSERT INTO actors(name) VALUES
 (N'Jason Momoa'), (N'Mark Wahlberg'), (N'Anne Hathaway'), -- Một Bộ Phim Minecraft
 (N'Aaron Pierre'), (N'Kelvin Harrison Jr.'), (N'Beyoncé'), -- Mufasa: Vua Sư Tử
 (N'Ben Schwartz'), (N'Idris Elba'), (N'Colleen O''Shaughnessey'), -- Nhím Sonic 3
-(N'TBA'), (N'TBA'), (N'TBA'), -- Bóng Đá Nữ Việt Nam
+(N'TBA1'), (N'TBA2'), (N'TBA3'), -- Bóng Đá Nữ Việt Nam
 (N'Brian Cox'), (N'Miranda Otto'), (N'Luke Newberry'), -- Chúa Tể Của Những Chiếc Nhẫn
 (N'Aaron Taylor-Johnson'), (N'Ariana DeBose'), (N'Russell Crowe'); -- Kraven - Thợ Săn Thủ Lĩnh
-
 --------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng director
 --------------------------------------------------------------------------------------
@@ -105,7 +124,6 @@ VALUES
 --------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng seats
 --------------------------------------------------------------------------------------
-
 INSERT INTO seats (number_of_column, number_of_row, genre_seats)
 VALUES
 (1, 'A', N'Thường'), (2, 'A', N'Thường'), (3, 'A', N'Thường'), (4, 'A', N'Thường'), (5, 'A', N'Thường'),
@@ -206,138 +224,52 @@ INSERT INTO genres_movies(id_genre, id_movie) VALUES
 --------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng show_times
 --------------------------------------------------------------------------------------
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES
-(1, 1, '2024-10-24 18:00:00'),
-(1, 2, '2024-10-25 20:00:00'),
-(1, 3, '2024-10-26 19:00:00'),
-(1, 4, '2024-10-27 21:00:00'),
-(1, 5, '2024-10-28 16:00:00'),
-(1, 6, '2024-10-29 17:00:00'),
-(1, 7, '2024-10-30 20:00:00'),
-(1, 8, '2024-10-31 19:00:00'),
+-- Thêm thời gian cho phim Ác Quỷ Truy Hồn (ID 3)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 1, '2024-10-23 06:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 2, '2024-10-23 06:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 3, '2024-10-23 06:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 4, '2024-10-23 07:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 5, '2024-10-23 07:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 6, '2024-10-23 07:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 7, '2024-10-23 07:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 8, '2024-10-23 08:00:00');
 
-(2, 1, '2024-10-24 20:00:00'),
-(2, 2, '2024-10-25 18:00:00'),
-(2, 3, '2024-10-26 19:30:00'),
-(2, 4, '2024-10-27 20:15:00'),
-(2, 5, '2024-10-28 17:00:00'),
-(2, 6, '2024-10-29 21:30:00'),
-(2, 7, '2024-10-30 19:15:00'),
-(2, 8, '2024-10-31 18:45:00'),
+-- Thêm thời gian cho phim Công Tử Bạc Liêu (ID 6)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 1, '2024-10-23 09:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 2, '2024-10-23 09:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 3, '2024-10-23 09:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 4, '2024-10-23 10:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 5, '2024-10-23 10:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 6, '2024-10-23 10:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 7, '2024-10-23 10:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 8, '2024-10-23 11:00:00');
 
-(3, 1, '2024-10-24 19:00:00'),
-(3, 2, '2024-10-25 21:00:00'),
-(3, 3, '2024-10-26 20:00:00'),
-(3, 4, '2024-10-27 18:30:00'),
-(3, 5, '2024-10-28 20:45:00'),
-(3, 6, '2024-10-29 17:15:00'),
-(3, 7, '2024-10-30 19:30:00'),
-(3, 8, '2024-10-31 21:00:00'),
+-- Thêm thời gian cho phim Nhím Sonic 3 (ID 10)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 1, '2024-10-23 12:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 2, '2024-10-23 12:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 3, '2024-10-23 12:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 4, '2024-10-23 13:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 5, '2024-10-23 13:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 6, '2024-10-23 13:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 7, '2024-10-23 13:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 8, '2024-10-23 14:00:00');
 
-(4, 1, '2024-10-24 18:15:00'),
-(4, 2, '2024-10-25 19:30:00'),
-(4, 3, '2024-10-26 21:00:00'),
-(4, 4, '2024-10-27 20:00:00'),
-(4, 5, '2024-10-28 18:45:00'),
-(4, 6, '2024-10-29 19:00:00'),
-(4, 7, '2024-10-30 21:30:00'),
-(4, 8, '2024-10-31 20:15:00'),
+-- Thêm thời gian cho phim Kraven - Thợ Săn Thủ Lĩnh (ID 13)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 1, '2024-10-23 15:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 2, '2024-10-23 15:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 3, '2024-10-23 15:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 4, '2024-10-23 16:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 5, '2024-10-23 16:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 6, '2024-10-23 16:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 7, '2024-10-23 16:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 8, '2024-10-23 17:00:00');
 
-(5, 1, '2024-10-24 20:30:00'),
-(5, 2, '2024-10-25 18:00:00'),
-(5, 3, '2024-10-26 19:15:00'),
-(5, 4, '2024-10-27 21:00:00'),
-(5, 5, '2024-10-28 20:30:00'),
-(5, 6, '2024-10-29 19:45:00'),
-(5, 7, '2024-10-30 18:15:00'),
-(5, 8, '2024-10-31 21:00:00'),
-
-(6, 1, '2024-10-24 19:30:00'),
-(6, 2, '2024-10-25 20:00:00'),
-(6, 3, '2024-10-26 21:00:00'),
-(6, 4, '2024-10-27 18:30:00'),
-(6, 5, '2024-10-28 19:00:00'),
-(6, 6, '2024-10-29 21:15:00'),
-(6, 7, '2024-10-30 19:30:00'),
-(6, 8, '2024-10-31 20:45:00'),
-
-(7, 1, '2024-10-24 20:00:00'),
-(7, 2, '2024-10-25 21:15:00'),
-(7, 3, '2024-10-26 19:30:00'),
-(7, 4, '2024-10-27 18:15:00'),
-(7, 5, '2024-10-28 20:45:00'),
-(7, 6, '2024-10-29 19:00:00'),
-(7, 7, '2024-10-30 21:30:00'),
-(7, 8, '2024-10-31 18:00:00'),
-
-(8, 1, '2024-10-24 21:30:00'),
-(8, 2, '2024-10-25 19:00:00'),
-(8, 3, '2024-10-26 20:30:00'),
-(8, 4, '2024-10-27 21:00:00'),
-(8, 5, '2024-10-28 18:30:00'),
-(8, 6, '2024-10-29 20:15:00'),
-(8, 7, '2024-10-30 19:45:00'),
-(8, 8, '2024-10-31 21:00:00'),
-
-(9, 1, '2024-10-24 19:00:00'),
-(9, 2, '2024-10-25 20:30:00'),
-(9, 3, '2024-10-26 18:00:00'),
-(9, 4, '2024-10-27 21:15:00'),
-(9, 5, '2024-10-28 20:00:00'),
-(9, 6, '2024-10-29 19:30:00'),
-(9, 7, '2024-10-30 21:00:00'),
-(9, 8, '2024-10-31 18:15:00'),
-
-(10, 1, '2024-10-24 20:15:00'),
-(10, 2, '2024-10-25 19:30:00'),
-(10, 3, '2024-10-26 21:00:00'),
-(10, 4, '2024-10-27 20:00:00'),
-(10, 5, '2024-10-28 18:45:00'),
-(10, 6, '2024-10-29 19:00:00'),
-(10, 7, '2024-10-30 21:30:00'),
-(10, 8, '2024-10-31 20:00:00'),
-
-(11, 1, '2024-10-24 18:30:00'),
-(11, 2, '2024-10-25 20:00:00'),
-(11, 3, '2024-10-26 19:30:00'),
-(11, 4, '2024-10-27 21:00:00'),
-(11, 5, '2024-10-28 18:15:00'),
-(11, 6, '2024-10-29 20:30:00'),
-(11, 7, '2024-10-30 19:00:00'),
-(11, 8, '2024-10-31 21:15:00'),
-
-(12, 1, '2024-10-24 19:45:00'),
-(12, 2, '2024-10-25 20:15:00'),
-(12, 3, '2024-10-26 21:00:00'),
-(12, 4, '2024-10-27 18:00:00'),
-(12, 5, '2024-10-28 19:30:00'),
-(12, 6, '2024-10-29 20:00:00'),
-(12, 7, '2024-10-30 21:15:00'),
-(12, 8, '2024-10-31 19:30:00'),
-
-(13, 1, '2024-10-24 20:00:00'),
-(13, 2, '2024-10-25 21:30:00'),
-(13, 3, '2024-10-26 19:15:00'),
-(13, 4, '2024-10-27 20:30:00'),
-(13, 5, '2024-10-28 18:45:00'),
-(13, 6, '2024-10-29 19:00:00'),
-(13, 7, '2024-10-30 21:00:00'),
-(13, 8, '2024-10-31 20:15:00'),
-
-(14, 1, '2024-10-24 21:15:00'),
-(14, 2, '2024-10-25 19:30:00'),
-(14, 3, '2024-10-26 20:00:00'),
-(14, 4, '2024-10-27 19:15:00'),
-(14, 5, '2024-10-28 20:00:00'),
-(14, 6, '2024-10-29 18:30:00'),
-(14, 7, '2024-10-30 19:00:00'),
-(14, 8, '2024-10-31 21:30:00'),
-
-(15, 1, '2024-10-24 18:15:00'),
-(15, 2, '2024-10-25 20:00:00'),
-(15, 3, '2024-10-26 21:30:00'),
-(15, 4, '2024-10-27 19:30:00'),
-(15, 5, '2024-10-28 20:15:00'),
-(15, 6, '2024-10-29 21:00:00'),
-(15, 7, '2024-10-30 18:00:00'),
-(15, 8, '2024-10-31 19:15:00');
+-- Thêm thời gian cho phim Tín Hiệu Cầu Cứu (ID 14)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 1, '2024-10-23 18:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 2, '2024-10-23 18:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 3, '2024-10-23 18:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 4, '2024-10-23 19:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 5, '2024-10-23 19:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 6, '2024-10-23 19:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 7, '2024-10-23 19:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 8, '2024-10-23 20:00:00');

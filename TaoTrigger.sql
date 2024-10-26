@@ -2,6 +2,52 @@
 GO
 
 --------------------------------- TRIGGER ----------------------------------------------
+--- TRIGGER: trg_UpdatePrice
+--- Mô tả: Tự động cập nhật giá tiền cho ghế ngồi (Thường, VIP, Ghế đôi) 
+--- khi thêm mới ghế vào bảng seats. Trigger này sẽ thiết lập giá tương ứng
+--- dựa trên loại ghế mà không cần thực hiện thủ công.
+-----------------------------------------------------------------------------------------
+CREATE TRIGGER trg_DeleteTransaction
+ON transactions
+AFTER DELETE
+AS
+BEGIN
+    -- Cập nhật trạng thái ghế thành 'ĐANG TRỐNG' dựa trên id_ticket trong bảng transactions
+    UPDATE screen_rooms_seats
+    SET status = N'ĐANG TRỐNG',
+        reservedBy = NULL
+    WHERE id_showtime IN (
+        SELECT id_showtime FROM deleted
+    ) AND id_seat IN (
+        SELECT id_seat FROM tickets WHERE id IN (
+            SELECT id_ticket FROM deleted
+        )
+    );
+END;
+
+--------------------------------- TRIGGER ----------------------------------------------
+--- TRIGGER: trg_UpdatePrice
+--- Mô tả: Tự động cập nhật giá tiền cho ghế ngồi dựa trên loại ghế (Thường, VIP, Ghế đôi) 
+--- khi thêm mới ghế vào bảng seats.
+-----------------------------------------------------------------------------------------
+CREATE TRIGGER trg_UpdatePrice
+ON seats
+AFTER INSERT
+AS
+BEGIN
+    UPDATE seats
+    SET price = 
+        CASE 
+            WHEN s.genre_seats = N'Thường' THEN 80
+            WHEN s.genre_seats = N'VIP' THEN 100
+            WHEN s.genre_seats = N'Ghế đôi' THEN 180
+            ELSE s.price
+        END
+    FROM seats s
+    INNER JOIN inserted i ON s.id = i.id; -- Giả sử có cột id là khóa chính
+END;
+
+--------------------------------- TRIGGER ----------------------------------------------
 --- TRIGGER: trg_Customers_DefaultRank
 --- Mô tả: Tự động thay thế giá trị NULL ở cột rank bằng 'CẤP ĐỒNG' khi thêm khách hàng mới vào bảng customers.
 -----------------------------------------------------------------------------------------
@@ -18,8 +64,6 @@ BEGIN
         ISNULL(rank, N'CẤP ĐỒNG')
     FROM inserted;
 END;
-
-
 
 --- TRIGGER: trg_AfterInsertShowtime
 --- Mô tả: Tự động thêm tất cả các ghế vào suất chiếu mới khi một suất chiếu mới được thêm.
