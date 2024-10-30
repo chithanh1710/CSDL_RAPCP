@@ -103,5 +103,134 @@ RETURN
     LEFT JOIN foods_drinks fd ON fd.id = tfd.id_food_drink
     WHERE t.id_customer = @CustomerId AND t.time_transaction IS NULL
 );
+GO
 
-SELECT * FROM GetTransactionDetailsByCustomerId(22);
+CREATE FUNCTION GetMonthlyRevenue()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT 
+        MONTH(time_transaction) AS month, 
+        SUM(total_amount) AS total_amount
+    FROM 
+        transactions
+    WHERE 
+        time_transaction >= DATEADD(MONTH, -5, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
+    GROUP BY 
+        MONTH(time_transaction)
+);
+
+GO
+
+CREATE FUNCTION GetCurrentMonthRevenueGrowth()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT 
+        MONTH(time_transaction) AS month,
+        YEAR(time_transaction) AS year,
+        SUM(total_amount) AS total_revenue
+    FROM 
+        transactions
+    WHERE 
+        (YEAR(time_transaction) = YEAR(GETDATE()) AND MONTH(time_transaction) = MONTH(GETDATE())) 
+        OR 
+        (YEAR(time_transaction) = YEAR(DATEADD(MONTH, -1, GETDATE())) AND MONTH(time_transaction) = MONTH(DATEADD(MONTH, -1, GETDATE())))
+    GROUP BY 
+        YEAR(time_transaction), MONTH(time_transaction)
+);
+
+CREATE FUNCTION GetCurrentAndPreviousDayRevenue()
+RETURNS TABLE
+AS
+RETURN
+(
+    WITH Days AS (
+        SELECT CAST(GETDATE() AS DATE) AS transaction_date
+        UNION ALL
+        SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
+    )
+    SELECT 
+        DAY(d.transaction_date) AS day,
+        MONTH(d.transaction_date) AS month,
+        YEAR(d.transaction_date) AS year,
+        ISNULL(SUM(t.total_amount), 0) AS total_revenue
+    FROM 
+        Days d
+    LEFT JOIN 
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+    GROUP BY 
+        d.transaction_date
+);
+GO
+CREATE FUNCTION GetTop5Customers()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT TOP 5
+        c.id AS customer_id,
+		c.email AS customer_email,
+		c.rank AS customer_rank,
+        c.name AS customer_name,
+        SUM(t.total_amount) AS total_spent
+    FROM 
+        customers c
+    JOIN 
+        transactions t ON c.id = t.id_customer
+    GROUP BY 
+        c.id, c.name,c.email,c.rank
+    ORDER BY 
+        total_spent DESC
+);
+GO
+
+CREATE FUNCTION GetCurrentAndPreviousDayTicketsSold()
+RETURNS TABLE
+AS
+RETURN
+(
+    WITH Days AS (
+        SELECT CAST(GETDATE() AS DATE) AS transaction_date
+        UNION ALL
+        SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
+    )
+    SELECT 
+        DAY(d.transaction_date) AS day,
+        MONTH(d.transaction_date) AS month,
+        YEAR(d.transaction_date) AS year,
+        ISNULL(COUNT(t.id), 0) AS total_tickets_sold
+    FROM 
+        Days d
+    LEFT JOIN 
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+    GROUP BY 
+        d.transaction_date
+);
+
+CREATE FUNCTION GetCurrentAndPreviousDayFoodDrinkSales()
+RETURNS TABLE
+AS
+RETURN
+(
+    WITH Days AS (
+        SELECT CAST(GETDATE() AS DATE) AS transaction_date
+        UNION ALL
+        SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
+    )
+    SELECT 
+        DAY(d.transaction_date) AS day,
+        MONTH(d.transaction_date) AS month,
+        YEAR(d.transaction_date) AS year,
+        ISNULL(SUM(tfd.quantity), 0) AS total_food_drink_sold
+    FROM 
+        Days d
+    LEFT JOIN 
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+    LEFT JOIN 
+        transactions_foods_drinks tfd ON t.id = tfd.id_transaction
+    GROUP BY 
+        d.transaction_date
+);

@@ -203,3 +203,29 @@ BEGIN
     -- Hoàn tất transaction
     COMMIT TRANSACTION;
 END;
+
+
+CREATE PROCEDURE Get3Month
+AS
+BEGIN
+	WITH DateRange AS (
+		SELECT 
+			CAST(DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) AS DATE) AS date
+		FROM 
+			master..spt_values
+		WHERE 
+			type = 'P' 
+			AND DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) < DATEADD(MONTH, 1, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
+	)
+	SELECT 
+		d.date AS transaction_date,
+		ISNULL(SUM(t.total_amount), 0) AS total_revenue
+	FROM 
+		DateRange d
+	LEFT JOIN 
+		transactions t ON d.date = CAST(t.time_transaction AS DATE)
+	GROUP BY 
+		d.date
+	ORDER BY 
+		d.date DESC;
+END;

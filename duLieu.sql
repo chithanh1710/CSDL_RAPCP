@@ -1,22 +1,22 @@
-﻿SELECT * FROM genres;
-SELECT * FROM directors;
-SELECT * FROM actors;
-SELECT * FROM movies;
-SELECT * FROM genres_movies;
-SELECT * FROM cinemas;
-SELECT * FROM screen_rooms;
-SELECT * FROM show_times;
-SELECT * FROM seats;
-SELECT * FROM screen_rooms_seats;
-SELECT * FROM tickets;
-SELECT * FROM customers;
-SELECT * FROM staffs;
-SELECT * FROM problems;
-SELECT * FROM transactions;
-SELECT * FROM foods_drinks;
-SELECT * FROM transactions_foods_drinks;
-SELECT * FROM vouchers;
-SELECT * FROM voucher_uses;
+﻿--SELECT * FROM genres;
+--SELECT * FROM directors;
+--SELECT * FROM actors;
+--SELECT * FROM movies;
+--SELECT * FROM genres_movies;
+--SELECT * FROM cinemas;
+--SELECT * FROM screen_rooms;
+--SELECT * FROM show_times;
+--SELECT * FROM seats;
+--SELECT * FROM screen_rooms_seats;
+--SELECT * FROM tickets;
+--SELECT * FROM customers;
+--SELECT * FROM staffs;
+--SELECT * FROM problems;
+--SELECT * FROM transactions;
+--SELECT * FROM foods_drinks;
+--SELECT * FROM transactions_foods_drinks;
+--SELECT * FROM vouchers;
+--SELECT * FROM voucher_uses;
 
 --------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng director
@@ -154,17 +154,17 @@ VALUES
 (N'Venom: Kèo Cuối','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/16/venom-sneak-750_1729048420375.jpg', 'https://cdn.galaxycine.vn/media/2024/10/16/venom-sneak-500_1729048419589.jpg','https://youtu.be/P0C9ccMXtqc',2, N'Description of Venom', '2024-10-16'),
 (N'Ác Quỷ Truy Hồn','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/11/ac-qu-truy-hon-750_1728616391362.jpg', 'https://cdn.galaxycine.vn/media/2024/10/11/ac-qu-truy-hon-500_1728616391060.jpg','https://youtu.be/KStJ_SXQEi8',3, N'Description of Ác Quỷ Truy Hồn', '2024-10-11'),
 (N'Vùng Đất Bị Nguyền Rủa','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/15/vung-dat-bi-nguyen-rua-750_1728961947843.jpg', 'https://cdn.galaxycine.vn/media/2024/10/15/vung-dat-bi-nguyen-rua-500_1728961947385.jpg','https://youtu.be/TTHThG-pj6s',4, N'Description of Vùng Đất Bị Nguyền Rủa', '2024-10-15'),
-(N'Võ Sĩ Giác Đấu II','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/7/15/vo-si-giac-dau-2-750_1721032801413.jpg','https://cdn.galaxycine.vn/media/2024/10/1/gladiator-2-500_1727752024675.jpg','https://youtu.be/VTZ4heeft1A',5, N'Description of Võ Sĩ Giác Đấu II', '2024-07-15'),
+(N'Võ Sĩ Giác Đấu II','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/7/15/vo-si-giac-dau-2-750_1721032801413.jpg','https://cdn.galaxycine.vn/media/2024/10/1/gladiator-2-500_1731752024675.jpg','https://youtu.be/VTZ4heeft1A',5, N'Description of Võ Sĩ Giác Đấu II', '2024-07-15'),
 (N'Công Tử Bạc Liêu','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/16/cong-tu-bac-lieu-750_1729070300753.jpg', 'https://cdn.galaxycine.vn/media/2024/10/16/cong-tu-bac-lieu-500_1729070300283.jpg','https://youtu.be/kPJGB2EGCnU',6, N'Description of Công Tử Bạc Liêu', '2024-10-16'),
 (N'Captain America: Trật Tự Thế Giới Mới','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/7/15/captain-america-brave-new-world-750_1721030812687.jpg', 'https://cdn.galaxycine.vn/media/2024/10/11/ac-qu-truy-hon-500_1728616391060.jpg','https://youtu.be/KStJ_SXQEi8',7, N'Description of Captain America', '2024-07-15'),
 (N'Một Bộ Phim Minecraft','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/9/9/minecraft-750_1725866141419.jpg', 'https://cdn.galaxycine.vn/media/2024/9/9/minecraft-500_1725866141382.jpg','https://youtu.be/QQKkvqUZaTI',8, N'Description of Minecraft', '2024-09-09'),
 (N'Mufasa: Vua Sư Tử','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/5/2/mufasa-750_1714620600428.jpg', 'https://cdn.galaxycine.vn/media/2024/5/2/mufasa-500_1714620600495.jpg','https://youtu.be/XcS9JwQEUag',9, N'Description of Mufasa', '2024-05-02'),
 (N'Nhím Sonic 3','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/9/5/sonic-3-750_1725508090665.jpg', 'https://cdn.galaxycine.vn/media/2024/9/5/sonic-3_1725508090051.jpg','https://youtu.be/9ZQMzTr0K4I',10, N'Description of Nhím Sonic 3', '2024-09-05'),
 (N'Bóng Đá Nữ Việt Nam: Chuyện Lần Đầu Kể','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/8/26/bong-da-nu-viet-nam-chuyen-chua-ke-750_1724644030738.jpg', 'https://cdn.galaxycine.vn/media/2024/10/7/bong-da-nu-viet-nam_1728295404365.jpg','https://youtu.be/RGyM7PbHP1M',11, N'Description of Bóng Đá Nữ Việt Nam', '2024-10-07'),
-(N'Chúa Tể Của Những Chiếc Nhẫn: Cuộc Chiến Của Rohirrim','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/8/26/the-lord-of-the-rings-the-war-of-the-rohirrim-750_1724658681013.jpg', 'https://cdn.galaxycine.vn/media/2024/9/24/chua-te-nhung-chiec-nhan-noi-chien-cua-rohirrim_1727146765628.jpg','https://youtu.be/DPjv_GWqK88',12, 'Description of Chúa Tể Của Những Chiếc Nhẫn', '2024-09-24'),
+(N'Chúa Tể Của Những Chiếc Nhẫn: Cuộc Chiến Của Rohirrim','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/8/26/the-lord-of-the-rings-the-war-of-the-rohirrim-750_1724658681013.jpg', 'https://cdn.galaxycine.vn/media/2024/9/24/chua-te-nhung-chiec-nhan-noi-chien-cua-rohirrim_1731146765628.jpg','https://youtu.be/DPjv_GWqK88',12, 'Description of Chúa Tể Của Những Chiếc Nhẫn', '2024-09-24'),
 (N'Kraven - Thợ Săn Thủ Lĩnh','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/6/20/kraven-the-hunter_1687246462669.jpg', 'https://cdn.galaxycine.vn/media/2024/8/29/kraven-500_1724918593694.jpg','https://youtu.be/EHMescXQuqA',13, N'Description of Kraven', '2024-08-29'),
-(N'Tín Hiệu Cầu Cứu','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/2/blink-twice-750_1727855007945.jpg','https://cdn.galaxycine.vn/media/2024/10/2/blink-twice-500_1727855008547.jpg','https://youtu.be/dkEhsRb4g-c',14, N'Description of Tín Hiệu Cầu Cứu', '2024-10-02'),
-(N'Cười 2','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/9/24/smile-2-750_1727160158125.jpg','https://cdn.galaxycine.vn/media/2024/9/24/smile-2-500_1727160157450.jpg','https://youtu.be/Aax82Ea0Tbk',15, N'Description of Cười 2', '2024-09-24');
+(N'Tín Hiệu Cầu Cứu','2:00:00',8, 18,N'ĐANG CHIẾU', 'https://cdn.galaxycine.vn/media/2024/10/2/blink-twice-750_1731855007945.jpg','https://cdn.galaxycine.vn/media/2024/10/2/blink-twice-500_1731855008547.jpg','https://youtu.be/dkEhsRb4g-c',14, N'Description of Tín Hiệu Cầu Cứu', '2024-10-02'),
+(N'Cười 2','2:00:00',8, 18,N'SẮP CHIẾU', 'https://cdn.galaxycine.vn/media/2024/9/24/smile-2-750_1731160158125.jpg','https://cdn.galaxycine.vn/media/2024/9/24/smile-2-500_1731160157450.jpg','https://youtu.be/Aax82Ea0Tbk',15, N'Description of Cười 2', '2024-09-24');
 
 --------------------------------- insert TABLE ----------------------------------------------
 --- Bảng sử dụng actor
@@ -192,11 +192,11 @@ INSERT INTO actors_movies(id_actor, id_movie) VALUES
 (20, 10), -- Idris Elba, Nhím Sonic 3
 (21, 10), -- Colleen O'Shaughnessey, Nhím Sonic 3
 (22, 11), -- TBA, Bóng Đá Nữ Việt Nam
-(23, 11), -- TBA, Bóng Đá Nữ Việt Nam
+(31, 11), -- TBA, Bóng Đá Nữ Việt Nam
 (24, 11), -- TBA, Bóng Đá Nữ Việt Nam
 (25, 12), -- Brian Cox, Chúa Tể Của Những Chiếc Nhẫn
 (26, 12), -- Miranda Otto, Chúa Tể Của Những Chiếc Nhẫn
-(27, 12), -- Luke Newberry, Chúa Tể Của Những Chiếc Nhẫn
+(31, 12), -- Luke Newberry, Chúa Tể Của Những Chiếc Nhẫn
 (28, 13), -- Aaron Taylor-Johnson, Kraven - Thợ Săn Thủ Lĩnh
 (29, 13), -- Ariana DeBose, Kraven - Thợ Săn Thủ Lĩnh
 (30, 13); -- Russell Crowe, Kraven - Thợ Săn Thủ Lĩnh
@@ -225,51 +225,254 @@ INSERT INTO genres_movies(id_genre, id_movie) VALUES
 --- Bảng sử dụng show_times
 --------------------------------------------------------------------------------------
 -- Thêm thời gian cho phim Ác Quỷ Truy Hồn (ID 3)
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 1, '2024-10-23 06:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 2, '2024-10-23 06:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 3, '2024-10-23 06:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 4, '2024-10-23 07:00:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 5, '2024-10-23 07:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 6, '2024-10-23 07:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 7, '2024-10-23 07:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 8, '2024-10-23 08:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 1, '2024-11-01 06:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 2, '2024-11-01 06:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 3, '2024-11-01 06:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 4, '2024-11-01 07:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 5, '2024-11-01 07:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 6, '2024-11-01 07:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 7, '2024-11-01 07:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 8, '2024-11-01 08:00:00');
 
 -- Thêm thời gian cho phim Công Tử Bạc Liêu (ID 6)
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 1, '2024-10-23 09:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 2, '2024-10-23 09:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 3, '2024-10-23 09:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 4, '2024-10-23 10:00:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 5, '2024-10-23 10:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 6, '2024-10-23 10:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 7, '2024-10-23 10:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 8, '2024-10-23 11:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 1, '2024-11-01 09:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 2, '2024-11-01 09:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 3, '2024-11-01 09:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 4, '2024-11-01 10:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 5, '2024-11-01 10:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 6, '2024-11-01 10:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 7, '2024-11-01 10:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 8, '2024-11-01 11:00:00');
 
 -- Thêm thời gian cho phim Nhím Sonic 3 (ID 10)
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 1, '2024-10-23 12:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 2, '2024-10-23 12:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 3, '2024-10-23 12:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 4, '2024-10-23 13:00:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 5, '2024-10-23 13:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 6, '2024-10-23 13:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 7, '2024-10-23 13:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 8, '2024-10-23 14:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 1, '2024-11-01 12:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 2, '2024-11-01 12:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 3, '2024-11-01 12:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 4, '2024-11-01 13:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 5, '2024-11-01 13:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 6, '2024-11-01 13:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 7, '2024-11-01 13:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 8, '2024-11-01 14:00:00');
 
 -- Thêm thời gian cho phim Kraven - Thợ Săn Thủ Lĩnh (ID 13)
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 1, '2024-10-23 15:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 2, '2024-10-23 15:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 3, '2024-10-23 15:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 4, '2024-10-23 16:00:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 5, '2024-10-23 16:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 6, '2024-10-23 16:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 7, '2024-10-23 16:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 8, '2024-10-23 17:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 1, '2024-11-01 15:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 2, '2024-11-01 15:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 3, '2024-11-01 15:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 4, '2024-11-01 16:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 5, '2024-11-01 16:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 6, '2024-11-01 16:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 7, '2024-11-01 16:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 8, '2024-11-01 17:00:00');
 
 -- Thêm thời gian cho phim Tín Hiệu Cầu Cứu (ID 14)
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 1, '2024-10-23 18:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 2, '2024-10-23 18:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 3, '2024-10-23 18:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 4, '2024-10-23 19:00:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 5, '2024-10-23 19:15:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 6, '2024-10-23 19:30:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 7, '2024-10-23 19:45:00');
-INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 8, '2024-10-23 20:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 1, '2024-11-01 18:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 2, '2024-11-01 18:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 3, '2024-11-01 18:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 4, '2024-11-01 19:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 5, '2024-11-01 19:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 6, '2024-11-01 19:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 7, '2024-11-01 19:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 8, '2024-11-01 20:00:00');
+
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 1, '2024-11-02 06:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 2, '2024-11-02 06:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 3, '2024-11-02 06:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 4, '2024-11-02 07:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 5, '2024-11-02 07:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 6, '2024-11-02 07:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 7, '2024-11-02 07:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (3, 8, '2024-11-02 08:00:00');
+
+-- Thêm thời gian cho phim Công Tử Bạc Liêu (ID 6)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 1, '2024-11-02 09:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 2, '2024-11-02 09:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 3, '2024-11-02 09:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 4, '2024-11-02 10:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 5, '2024-11-02 10:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 6, '2024-11-02 10:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 7, '2024-11-02 10:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (6, 8, '2024-11-02 11:00:00');
+
+-- Thêm thời gian cho phim Nhím Sonic 3 (ID 10)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 1, '2024-11-02 12:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 2, '2024-11-02 12:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 3, '2024-11-02 12:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 4, '2024-11-02 13:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 5, '2024-11-02 13:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 6, '2024-11-02 13:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 7, '2024-11-02 13:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (10, 8, '2024-11-02 14:00:00');
+
+-- Thêm thời gian cho phim Kraven - Thợ Săn Thủ Lĩnh (ID 13)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 1, '2024-11-02 15:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 2, '2024-11-02 15:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 3, '2024-11-02 15:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 4, '2024-11-02 16:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 5, '2024-11-02 16:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 6, '2024-11-02 16:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 7, '2024-11-02 16:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (13, 8, '2024-11-02 17:00:00');
+
+-- Thêm thời gian cho phim Tín Hiệu Cầu Cứu (ID 14)
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 1, '2024-11-02 18:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 2, '2024-11-02 18:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 3, '2024-11-02 18:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 4, '2024-11-02 19:00:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 5, '2024-11-02 19:15:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 6, '2024-11-02 19:30:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 7, '2024-11-02 19:45:00');
+INSERT INTO show_times (id_movie, id_screen_room, time_start) VALUES (14, 8, '2024-11-02 20:00:00');
+
+
+INSERT INTO customers (name, email, phone, rank)
+VALUES
+    (N'Nguyễn Văn A', 'nguyenvana@example.com', '0123456789', N'CẤP ĐỒNG'),
+    (N'Trần Thị B', 'tranthib@example.com', '0987654321', N'CẤP BẠC'),
+    (N'Lê Văn C', 'levanc@example.com', '0112233445', N'CẤP VÀNG'),
+    (N'Phạm Thị D', 'phamthid@example.com', '0122334455', N'CẤP BẠCH KIM'),
+    (N'Đỗ Văn E', 'dovan@example.com', '0133445566', N'CẤP KIM CƯƠNG'),
+    (N'Nguyễn Thị F', 'nguyenthif@example.com', '0144556677', N'CẤP ĐỒNG'),
+    (N'Bùi Văn G', 'buivang@example.com', '0155667788', N'CẤP BẠC'),
+    (N'Vũ Thị H', 'vuthih@example.com', '0166778899', N'CẤP VÀNG'),
+    (N'Tống Văn I', 'tongvani@example.com', '0177889900', N'CẤP BẠCH KIM'),
+    (N'Phan Thị J', 'panthij@example.com', '0188999001', N'CẤP KIM CƯƠNG');
+
+INSERT INTO tickets (id_show_time, id_seat)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 3),
+    (2, 4),
+    (3, 5),
+    (3, 6),
+    (1, 7),
+    (2, 8),
+    (3, 9),
+    (1, 10);
+
+----------------------------------------------------------------------------
+INSERT INTO transactions (id_customer, id_staff, id_ticket, total_amount, time_transaction, type_transaction) VALUES
+(1, NULL, 1, 150.00, '2024-10-15 10:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-10-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-10-11 08:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-10-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-10-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-10-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-10-15 08:20:40.000', NULL),
+(1, NULL, 1, 210.00, '2024-10-17 13:32:10.000', NULL),
+(2, NULL, 1, 315.00, '2024-10-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-10-21 08:10:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-09-15 09:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-09-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-09-11 09:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-09-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-09-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-09-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-09-15 08:20:40.000', NULL),
+(1, NULL, 1, 209.00, '2024-09-17 13:32:09.000', NULL),
+(2, NULL, 1, 315.00, '2024-09-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-09-21 09:09:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-08-15 08:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-08-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-08-11 08:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-08-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-08-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-08-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-08-15 08:20:40.000', NULL),
+(1, NULL, 1, 208.00, '2024-08-17 13:32:08.000', NULL),
+(2, NULL, 1, 315.00, '2024-08-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-08-21 08:08:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-07-15 07:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-07-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-07-11 07:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-07-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-07-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-07-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-07-15 07:20:40.000', NULL),
+(1, NULL, 1, 207.00, '2024-07-17 13:32:07.000', NULL),
+(2, NULL, 1, 315.00, '2024-07-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-07-21 07:07:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-06-15 06:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-06-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-06-11 06:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-06-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-06-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-06-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-06-15 06:20:40.000', NULL),
+(1, NULL, 1, 206.00, '2024-06-17 13:32:06.000', NULL),
+(2, NULL, 1, 315.00, '2024-06-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-06-21 06:06:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-05-15 05:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-05-18 14:05:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-05-11 05:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-05-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-05-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-05-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-05-15 05:20:40.000', NULL),
+(1, NULL, 1, 205.00, '2024-05-17 13:32:05.000', NULL),
+(2, NULL, 1, 315.00, '2024-05-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-05-21 05:05:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-04-15 04:12:45.000', NULL),
+(2, NULL, 1, 420.00, '2024-04-18 14:04:32.000', NULL),
+(1, NULL, 1, 300.00, '2024-04-11 04:30:20.000', NULL),
+(1, NULL, 1, 215.00, '2024-04-14 16:31:02.000', NULL),
+(2, NULL, 1, 180.00, '2024-04-01 12:45:32.000', NULL),
+(1, NULL, 1, 95.00, '2024-04-12 11:00:00.000', NULL),
+(2, NULL, 1, 320.00, '2024-04-15 04:20:40.000', NULL),
+(1, NULL, 1, 204.00, '2024-04-17 13:32:04.000', NULL),
+(2, NULL, 1, 315.00, '2024-04-19 15:45:28.000', NULL),
+(1, NULL, 1, 340.00, '2024-04-21 04:04:15.000', NULL),
+(1, NULL, 1, 150.00, '2024-10-30 10:00:00.000', NULL),
+(2, NULL, 1, 420.00, '2024-10-30 11:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-30 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-30 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-30 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-30 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-30 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-30 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-30 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-30 19:00:00.000', NULL),
+(1, NULL, 1, 150.00, '2024-10-29 10:00:00.000', NULL),
+(2, NULL, 1, 420.00, '2024-10-29 11:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-29 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-29 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-29 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-29 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-29 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-29 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-29 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-29 19:00:00.000', NULL),
+(1, NULL, 1, 150.00, '2024-10-28 10:00:00.000', NULL),
+(2, NULL, 1, 420.00, '2024-10-28 11:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-28 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-28 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-28 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-28 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-28 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-28 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-28 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-28 19:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-28 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-28 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-28 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-28 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-28 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-28 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-28 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-28 19:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-28 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-28 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-28 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-28 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-28 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-28 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-28 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-28 19:00:00.000', NULL),
+(3, NULL, 1, 300.00, '2024-10-28 12:00:00.000', NULL),
+(4, NULL, 1, 215.00, '2024-10-28 13:00:00.000', NULL),
+(5, NULL, 1, 180.00, '2024-10-28 14:00:00.000', NULL),
+(6, NULL, 1, 95.00, '2024-10-28 15:00:00.000', NULL),
+(7, NULL, 1, 320.00, '2024-10-28 16:00:00.000', NULL),
+(8, NULL, 1, 210.00, '2024-10-28 17:00:00.000', NULL),
+(9, NULL, 1, 315.00, '2024-10-28 18:00:00.000', NULL),
+(10, NULL, 1, 340.00, '2024-10-28 19:00:00.000', NULL);

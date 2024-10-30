@@ -368,3 +368,43 @@ BEGIN
         WHERE i.time_transaction IS NOT NULL;  -- Kiểm tra xem time_transaction đã được cập nhật
     END
 END;
+
+
+CREATE TRIGGER trg_UpdateCustomerRank
+ON transactions
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @id_customer INT;
+    DECLARE @total_spending DECIMAL(10, 2);
+
+    -- Duyệt qua các bản ghi mới được chèn vào transactions
+    DECLARE cur CURSOR FOR 
+    SELECT id_customer, SUM(total_amount) AS total_spending
+    FROM transactions
+    GROUP BY id_customer;
+
+    OPEN cur;
+
+    FETCH NEXT FROM cur INTO @id_customer, @total_spending;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Cập nhật rank cho khách hàng dựa trên tổng chi tiêu
+        UPDATE customers
+        SET rank = 
+            CASE 
+                WHEN @total_spending >= 30000 THEN N'CẤP KIM CƯƠNG'  -- Kim Cương
+                WHEN @total_spending >= 10000 THEN N'CẤP BẠCH KIM'   -- Bạch Kim
+                WHEN @total_spending >= 5000 THEN N'CẤP VÀNG'       -- Vàng
+                WHEN @total_spending >= 3000 THEN N'CẤP BẠC'       -- Bạc
+                ELSE N'CẤP ĐỒNG'                                    -- Đồng
+            END
+        WHERE id = @id_customer;
+
+        FETCH NEXT FROM cur INTO @id_customer, @total_spending;
+    END
+
+    CLOSE cur;
+    DEALLOCATE cur;
+END;
