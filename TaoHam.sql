@@ -122,25 +122,31 @@ RETURN
 );
 
 GO
-
 CREATE FUNCTION GetCurrentMonthRevenueGrowth()
 RETURNS TABLE
 AS
 RETURN
 (
+    WITH LastTwoMonths AS (
+        SELECT MONTH(GETDATE()) AS month, YEAR(GETDATE()) AS year
+        UNION ALL
+        SELECT MONTH(DATEADD(MONTH, -1, GETDATE())) AS month, YEAR(DATEADD(MONTH, -1, GETDATE())) AS year
+    )
     SELECT 
-        MONTH(time_transaction) AS month,
-        YEAR(time_transaction) AS year,
-        SUM(total_amount) AS total_revenue
+        ltm.month,
+        ltm.year,
+        ISNULL(SUM(t.total_amount), 0) AS total_revenue
     FROM 
-        transactions
-    WHERE 
-        (YEAR(time_transaction) = YEAR(GETDATE()) AND MONTH(time_transaction) = MONTH(GETDATE())) 
-        OR 
-        (YEAR(time_transaction) = YEAR(DATEADD(MONTH, -1, GETDATE())) AND MONTH(time_transaction) = MONTH(DATEADD(MONTH, -1, GETDATE())))
+        LastTwoMonths AS ltm
+    LEFT JOIN 
+        transactions AS t
+    ON 
+        MONTH(t.time_transaction) = ltm.month AND YEAR(t.time_transaction) = ltm.year
     GROUP BY 
-        YEAR(time_transaction), MONTH(time_transaction)
+        ltm.month, ltm.year
 );
+
+select * from GetCurrentMonthRevenueGrowth()
 
 CREATE FUNCTION GetCurrentAndPreviousDayRevenue()
 RETURNS TABLE
@@ -164,6 +170,7 @@ RETURN
     GROUP BY 
         d.transaction_date
 );
+
 GO
 CREATE FUNCTION GetTop5Customers()
 RETURNS TABLE
@@ -234,3 +241,5 @@ RETURN
     GROUP BY 
         d.transaction_date
 );
+
+select * from GetCurrentAndPreviousDayFoodDrinkSales()
