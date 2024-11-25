@@ -105,141 +105,154 @@ RETURN
 );
 GO
 
+-- Hàm tính tổng doanh thu theo từng tháng trong 5 tháng gần nhất
 CREATE FUNCTION GetMonthlyRevenue()
 RETURNS TABLE
 AS
 RETURN
 (
     SELECT 
-        MONTH(time_transaction) AS month, 
-        SUM(total_amount) AS total_amount
+        MONTH(time_transaction) AS month, -- Lấy tháng từ thời gian giao dịch
+        SUM(total_amount) AS total_amount -- Tổng doanh thu của các giao dịch trong tháng
     FROM 
         transactions
     WHERE 
-        time_transaction >= DATEADD(MONTH, -5, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
+        time_transaction >= DATEADD(MONTH, -5, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)) -- Lọc các giao dịch trong vòng 5 tháng gần nhất
     GROUP BY 
-        MONTH(time_transaction)
+        MONTH(time_transaction) -- Nhóm theo tháng
 );
 
 GO
+
+-- Hàm tính doanh thu tháng hiện tại và tháng trước để so sánh tăng trưởng
 CREATE FUNCTION GetCurrentMonthRevenueGrowth()
 RETURNS TABLE
 AS
 RETURN
 (
     WITH LastTwoMonths AS (
+        -- Tạo danh sách hai tháng gần nhất: tháng hiện tại và tháng trước
         SELECT MONTH(GETDATE()) AS month, YEAR(GETDATE()) AS year
         UNION ALL
         SELECT MONTH(DATEADD(MONTH, -1, GETDATE())) AS month, YEAR(DATEADD(MONTH, -1, GETDATE())) AS year
     )
     SELECT 
-        ltm.month,
-        ltm.year,
-        ISNULL(SUM(t.total_amount), 0) AS total_revenue
+        ltm.month, -- Tháng
+        ltm.year,  -- Năm
+        ISNULL(SUM(t.total_amount), 0) AS total_revenue -- Tổng doanh thu (nếu không có giao dịch thì trả về 0)
     FROM 
         LastTwoMonths AS ltm
     LEFT JOIN 
         transactions AS t
     ON 
-        MONTH(t.time_transaction) = ltm.month AND YEAR(t.time_transaction) = ltm.year
+        MONTH(t.time_transaction) = ltm.month AND YEAR(t.time_transaction) = ltm.year -- Ghép với bảng transactions theo tháng và năm
     GROUP BY 
-        ltm.month, ltm.year
+        ltm.month, ltm.year -- Nhóm theo tháng và năm
 );
 
-select * from GetCurrentMonthRevenueGrowth()
+GO
 
+-- Hàm tính doanh thu của ngày hiện tại và ngày hôm qua
 CREATE FUNCTION GetCurrentAndPreviousDayRevenue()
 RETURNS TABLE
 AS
 RETURN
 (
     WITH Days AS (
+        -- Tạo danh sách gồm ngày hôm nay và ngày hôm qua
         SELECT CAST(GETDATE() AS DATE) AS transaction_date
         UNION ALL
         SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
     )
     SELECT 
-        DAY(d.transaction_date) AS day,
-        MONTH(d.transaction_date) AS month,
-        YEAR(d.transaction_date) AS year,
-        ISNULL(SUM(t.total_amount), 0) AS total_revenue
+        DAY(d.transaction_date) AS day, -- Ngày
+        MONTH(d.transaction_date) AS month, -- Tháng
+        YEAR(d.transaction_date) AS year, -- Năm
+        ISNULL(SUM(t.total_amount), 0) AS total_revenue -- Tổng doanh thu (nếu không có thì trả về 0)
     FROM 
         Days d
     LEFT JOIN 
-        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date -- Ghép với bảng transactions theo ngày
     GROUP BY 
-        d.transaction_date
+        d.transaction_date -- Nhóm theo ngày giao dịch
 );
 
 GO
+
+-- Hàm trả về top 5 khách hàng chi tiêu nhiều nhất
 CREATE FUNCTION GetTop5Customers()
 RETURNS TABLE
 AS
 RETURN
 (
     SELECT TOP 5
-        c.id AS customer_id,
-		c.email AS customer_email,
-		c.rank AS customer_rank,
-        c.name AS customer_name,
-        SUM(t.total_amount) AS total_spent
+        c.id AS customer_id, -- ID khách hàng
+        c.email AS customer_email, -- Email khách hàng
+        c.rank AS customer_rank, -- Hạng của khách hàng
+        c.name AS customer_name, -- Tên khách hàng
+        SUM(t.total_amount) AS total_spent -- Tổng số tiền đã chi tiêu
     FROM 
         customers c
     JOIN 
-        transactions t ON c.id = t.id_customer
+        transactions t ON c.id = t.id_customer -- Ghép với bảng transactions theo ID khách hàng
     GROUP BY 
-        c.id, c.name,c.email,c.rank
+        c.id, c.name, c.email, c.rank -- Nhóm theo thông tin khách hàng
     ORDER BY 
-        total_spent DESC
+        total_spent DESC -- Sắp xếp giảm dần theo số tiền đã chi tiêu
 );
+
 GO
 
+-- Hàm tính số lượng vé bán ra trong ngày hôm nay và hôm qua
 CREATE FUNCTION GetCurrentAndPreviousDayTicketsSold()
 RETURNS TABLE
 AS
 RETURN
 (
     WITH Days AS (
+        -- Tạo danh sách gồm ngày hôm nay và ngày hôm qua
         SELECT CAST(GETDATE() AS DATE) AS transaction_date
         UNION ALL
         SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
     )
     SELECT 
-        DAY(d.transaction_date) AS day,
-        MONTH(d.transaction_date) AS month,
-        YEAR(d.transaction_date) AS year,
-        ISNULL(COUNT(t.id), 0) AS total_tickets_sold
+        DAY(d.transaction_date) AS day, -- Ngày
+        MONTH(d.transaction_date) AS month, -- Tháng
+        YEAR(d.transaction_date) AS year, -- Năm
+        ISNULL(COUNT(t.id), 0) AS total_tickets_sold -- Số vé bán ra (nếu không có thì trả về 0)
     FROM 
         Days d
     LEFT JOIN 
-        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date -- Ghép với bảng transactions theo ngày
     GROUP BY 
-        d.transaction_date
+        d.transaction_date -- Nhóm theo ngày giao dịch
 );
 
+GO
+
+-- Hàm tính số lượng đồ ăn và đồ uống bán ra trong ngày hôm nay và hôm qua
 CREATE FUNCTION GetCurrentAndPreviousDayFoodDrinkSales()
 RETURNS TABLE
 AS
 RETURN
 (
     WITH Days AS (
+        -- Tạo danh sách gồm ngày hôm nay và ngày hôm qua
         SELECT CAST(GETDATE() AS DATE) AS transaction_date
         UNION ALL
         SELECT CAST(DATEADD(DAY, -1, GETDATE()) AS DATE)
     )
     SELECT 
-        DAY(d.transaction_date) AS day,
-        MONTH(d.transaction_date) AS month,
-        YEAR(d.transaction_date) AS year,
-        ISNULL(SUM(tfd.quantity), 0) AS total_food_drink_sold
+        DAY(d.transaction_date) AS day, -- Ngày
+        MONTH(d.transaction_date) AS month, -- Tháng
+        YEAR(d.transaction_date) AS year, -- Năm
+        ISNULL(SUM(tfd.quantity), 0) AS total_food_drink_sold -- Số lượng đồ ăn/uống bán ra (nếu không có thì trả về 0)
     FROM 
         Days d
     LEFT JOIN 
-        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date
+        transactions t ON CAST(t.time_transaction AS DATE) = d.transaction_date -- Ghép với bảng transactions theo ngày
     LEFT JOIN 
-        transactions_foods_drinks tfd ON t.id = tfd.id_transaction
+        transactions_foods_drinks tfd ON t.id = tfd.id_transaction -- Ghép với bảng transactions_foods_drinks để lấy số lượng bán
     GROUP BY 
-        d.transaction_date
+        d.transaction_date -- Nhóm theo ngày giao dịch
 );
-
-select * from GetCurrentAndPreviousDayFoodDrinkSales()

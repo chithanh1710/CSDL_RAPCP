@@ -205,27 +205,31 @@ BEGIN
 END;
 
 
+-- Thủ tục tính tổng doanh thu từng ngày trong vòng 3 tháng gần nhất
 CREATE PROCEDURE Get3Month
 AS
 BEGIN
-	WITH DateRange AS (
-		SELECT 
-			CAST(DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) AS DATE) AS date
-		FROM 
-			master..spt_values
-		WHERE 
-			type = 'P' 
-			AND DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) < DATEADD(MONTH, 1, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))
-	)
-	SELECT 
-		d.date AS transaction_date,
-		ISNULL(SUM(t.total_amount), 0) AS total_revenue
-	FROM 
-		DateRange d
-	LEFT JOIN 
-		transactions t ON d.date = CAST(t.time_transaction AS DATE)
-	GROUP BY 
-		d.date
-	ORDER BY 
-		d.date DESC;
+    -- Tạo dãy ngày (DateRange) từ 2 tháng trước đến cuối tháng hiện tại
+    WITH DateRange AS (
+        SELECT 
+            CAST(DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) AS DATE) AS date -- Tạo danh sách các ngày
+        FROM 
+            master..spt_values -- Sử dụng bảng hệ thống để tạo danh sách số nguyên
+        WHERE 
+            type = 'P' -- Lọc chỉ lấy các giá trị phù hợp (dạng số nguyên dương)
+            AND DATEADD(DAY, number, DATEADD(MONTH, -2, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1))) < DATEADD(MONTH, 1, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)) 
+            -- Điều kiện: Ngày được tạo phải nhỏ hơn ngày đầu tiên của tháng kế tiếp
+    )
+    SELECT 
+        d.date AS transaction_date, -- Ngày giao dịch
+        ISNULL(SUM(t.total_amount), 0) AS total_revenue -- Tổng doanh thu trong ngày (nếu không có giao dịch thì trả về 0)
+    FROM 
+        DateRange d -- Dãy ngày đã tạo
+    LEFT JOIN 
+        transactions t ON d.date = CAST(t.time_transaction AS DATE) -- Ghép với bảng transactions theo ngày
+    GROUP BY 
+        d.date -- Nhóm theo từng ngày
+    ORDER BY 
+        d.date DESC; -- Sắp xếp kết quả theo ngày giảm dần
 END;
+
